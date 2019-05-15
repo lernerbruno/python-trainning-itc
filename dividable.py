@@ -5,6 +5,12 @@ Author: Bruno Lerner
 
 
 def dividable(numbers, divisor):
+    '''
+    it generates a list with bool values for each word, checking if its divisible by some number and checks if everything is true
+    :param numbers:
+    :param divisor:
+    :return:
+    '''
     return all([x % divisor == 0 for x in numbers])
 
 

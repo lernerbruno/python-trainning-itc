@@ -3,6 +3,8 @@ Author: Bruno Lerner
 """
 import re
 
+NEWLINE_CHAR = "\\n"
+UNIQUE_CHAR = "&"
 
 def decipher(message):
     cipher = {'s': 'L', 'b': 's', 'w': 'O', 'z': 'G', 'c': 'o', 'J': 'y', 'V': 't', 'P': 'w', 'B': 'f', 'Z': 'q',
@@ -33,13 +35,12 @@ def main():
     f = open('encrypted_string.txt', 'r')
     encoded_message = f.read()
     f.close()
-    encoded_message = encoded_message.replace("\r\n", "&")
-    print(encoded_message)
+    encoded_message = encoded_message.replace(NEWLINE_CHAR, UNIQUE_CHAR)
     deciphered = decipher(encoded_message)
     decoded_message = reverse_words(deciphered)
 
-    decoded_message = decoded_message.replace('&', '\n')
-    # print(decoded_message)
+    decoded_message = decoded_message.replace(UNIQUE_CHAR, '\n')
+    print(decoded_message)
 
 
 if __name__ == "__main__":

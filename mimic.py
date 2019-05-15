@@ -45,10 +45,13 @@ columns, so the output looks better.
 
 import random
 import sys
+import os
 
 NUMBER_OF_ARGS = 2
 FILE_NAME = 1
-BLACKLIST_CHARS = ',":\n.!)(*-`;\'_[]{}'
+BLACKLIST_CHARS = ',":\n.!)(*-`;\'_[]{}?'
+NUMBER_OF_WORDS = 200
+
 
 def clean_word(word):
     """
@@ -56,7 +59,7 @@ def clean_word(word):
     :param word:
     :return:
     """
-    return word.lower().strip(BLACKLIST_CHARS)
+    return word.strip(BLACKLIST_CHARS)
 
 
 def read_file(filename):
@@ -74,40 +77,50 @@ def read_file(filename):
 def mimic_dict(filename):
     """Returns mimic dict mapping each word to list of words which follow it."""
     words = read_file(filename)
-
-    mimic = {"": [words[0]]}
+    mimic = {"": [clean_word(words[0])]}
 
     for i in range(len(words)):
         curr_word = words[i]
-        next_word = words[i+1] if i < len(words) - 1 else ""
-        if curr_word != "":
-            cleaned_word = clean_word(curr_word)
-            cleaned_next_word = clean_word(next_word)
+        next_word = words[i + 1] if i < len(words) - 1 else ""
+        cleaned_word = clean_word(curr_word)
+        cleaned_next_word = clean_word(next_word)
+
+        if cleaned_word != "":
             if mimic.get(cleaned_word) is None:
                 mimic[cleaned_word] = [cleaned_next_word]
             else:
                 curr_list = mimic.get(cleaned_word)
                 curr_list.append(cleaned_next_word)
                 mimic[cleaned_word] = curr_list
-
-    print(mimic)
     return mimic
 
 
 def print_mimic(mimic_dict, word):
     """Given mimic dict and start word, prints 200 random words."""
-    # +++your code here+++
+    random_text = ""
+    i = 0
+    while i < NUMBER_OF_WORDS:
+        possible_words = mimic_dict.get(word) if mimic_dict.get(word) is not None else mimic_dict.get("")[0]
+        # print(possible_words)
+        chosen_word = random.choice(possible_words)
+        random_text += random.choice(possible_words) + ' '
+        word = chosen_word
+        i += 1
+    print(random_text)
     return
 
 
 def main():
     """ Provided main(), calls mimic_dict() and mimic() """
-    if len(sys.argv) != NUMBER_OF_ARGS:
-        print("usage: ./mimic.py file-to-read")
-        sys.exit(1)
+    try:
+        if len(sys.argv) != NUMBER_OF_ARGS:
+            print("usage: ./mimic.py file-to-read")
+            sys.exit(1)
 
-    my_dict = mimic_dict(sys.argv[FILE_NAME])
-    print_mimic(my_dict, "")
+        my_dict = mimic_dict(sys.argv[FILE_NAME])
+        print_mimic(my_dict, "")
+    except FileNotFoundError:
+        print("File not found, please provide an existing file")
 
 
 if __name__ == "__main__":
