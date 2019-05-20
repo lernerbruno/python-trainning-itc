@@ -1,0 +1,36 @@
+1.
+	a) SHOW DATABASES;
+	b) My MySQL server owns these databases below:
+		+--------------------+
+		| Database           |
+		+--------------------+
+		| imdb               |
+		| information_schema |
+		| mydb               |
+		| mysql              |
+		| performance_schema |
+		| sys                |
+		+--------------------+
+		6 rows in set (0.69 sec)
+
+
+2. 
+	a) use imdb;
+	   show tables;
+	b) It has 3 tables. Actor, cast and movies. 
+		+----------------+
+		| Tables_in_imdb |
+		+----------------+
+		| actors         |
+		| cast           |
+		| movies         |
+		+----------------+
+		3 rows in set (0.00 sec)
+
+3.
+	a) use imdb;
+	   describe movies;
+	
+	b) You can find the title, name, year and its genre, followed by an id.
+
+	

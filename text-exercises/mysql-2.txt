@@ -1,0 +1,14 @@
+1. create table food (
+    ID INT AUTO_INCREMENT PRIMARY KEY,
+    Name varchar(200),
+    Do_I_like_it boolean
+    );
+
+2. insert into food values (DEFAULT, 'Pizza', true), (DEFAULT, 'Broccoli', true), (DEFAULT, 'Ice cream', true);
+
+3. update food 
+   set Do_I_like_it = False
+   where Name='Ice cream'; 
+
+4. delete from food
+   where Name='Ice cream';

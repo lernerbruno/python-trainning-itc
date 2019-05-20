@@ -1,0 +1,6 @@
+1) Under the Log tab, I right clicked the last commit and clicked on Checkout Revision, which moves my HEAD to that commit. Under the same Log tab I can see the files that were changed. If I right click one of them I can press Show diff
+
+2) I fount the .ignore plugin, I installed it via Preferences. As soon as I installed it, it told me that my project didn't have a .gitgnore file, and asked me if I want to create it.
+When I click Create, it ask me to choose a template. So I clicked Python, and it generated for me
+
+3) I had already markdown support plugin, so I created the REAME.md file and pushed both README and gitgnore files

@@ -1,0 +1,33 @@
+1.
+	a)  select count(actors.full_name)
+		from cast
+		inner join actors on cast.actor_id = actors.id
+		inner join movies on cast.movie_id = movies.id
+		where movies.title = 'Aliens';
+	b) a table with the number of actors that participated in Aliens movie.
+
+2. 
+	a)  select movies.title
+		from cast
+		inner join actors on cast.actor_id = actors.id
+		inner join movies on cast.movie_id = movies.id
+		where actors.full_name = 'Kevin Bacon';
+	b) I got a table with the titles of the move that Kevin Bacon participated in, which are 9 movies
+
+3.
+	a)  select distinct actors.full_name
+		from actors as kevin_bacon
+		inner join cast as kevin_bacon_films on kevin_bacon_films.actor_id = kevin_bacon.id
+		inner join cast on kevin_bacon_films.movie_id = cast.movie_id
+		inner join actors on cast.actor_id = actors.id 
+		where kevin_bacon.full_name = 'Kevin Bacon';
+	b)  I got a table with the names of all actors that have participated in same filme as Kevin bacon, wich is 597 actors 
+
+4.
+	a)  select actors.full_name, avg(cast.salary)
+	 	from cast
+	 	inner join actors on cast.actor_id = actors.id
+	 	group by cast.actor_id order by avg(cast.salary) desc
+	 	limit 1;
+
+	b) I got a table with one row, which has the name "Grant James" and its salary 999435

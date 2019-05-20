@@ -1,0 +1,33 @@
+Brunos-MacBook-Pro:~ brunolerner$ mkdir ITC
+Brunos-MacBook-Pro:~ brunolerner$ cd ITC/
+Brunos-MacBook-Pro:ITC brunolerner$ echo "hello" > 1.txt
+Brunos-MacBook-Pro:ITC brunolerner$ cat 1.txt
+hello
+Brunos-MacBook-Pro:ITC brunolerner$ chmod 444 1.txt
+Brunos-MacBook-Pro:ITC brunolerner$ ls -l
+total 8
+-r--r--r--  1 brunolerner  staff  6 Apr 16 16:56 1.txt
+Brunos-MacBook-Pro:ITC brunolerner$ chmod 666 1.txt
+Brunos-MacBook-Pro:ITC brunolerner$ ls -l
+total 8
+-rw-rw-rw-  1 brunolerner  staff  6 Apr 16 16:56 1.txt
+Brunos-MacBook-Pro:ITC brunolerner$ rm -f 1.txt
+Brunos-MacBook-Pro:ITC brunolerner$ echo "print(\"hello world\")" > hello_world.py
+Brunos-MacBook-Pro:ITC brunolerner$ python hello_world.py
+hello world
+Brunos-MacBook-Pro:ITC brunolerner$ mkdir nested
+Brunos-MacBook-Pro:ITC brunolerner$ touch nested/nested.txt
+Brunos-MacBook-Pro:ITC brunolerner$ ls -al nested/
+total 0
+drwxr-xr-x  3 brunolerner  staff  102 Apr 16 17:01 .
+drwxr-xr-x  4 brunolerner  staff  136 Apr 16 17:01 ..
+-rw-r--r--  1 brunolerner  staff    0 Apr 16 17:01 nested.txt
+Brunos-MacBook-Pro:ITC brunolerner$ ls
+hello_world.py	nested
+Brunos-MacBook-Pro:ITC brunolerner$ ls -R
+hello_world.py	nested
+
+./nested:
+nested.txt
+Brunos-MacBook-Pro:ITC brunolerner$ cd ..
+Brunos-MacBook-Pro:~ brunolerner$ rm -rf ITC/

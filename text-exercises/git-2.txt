@@ -1,0 +1,109 @@
+1)Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   hello_world.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git diff hello_world.txt
+diff --git a/hello_world.txt b/hello_world.txt
+index 259faea..ac5d463 100644
+--- a/hello_world.txt
++++ b/hello_world.txt
+@@ -1,4 +1,4 @@
+-Lorem ipsum dolor sit amet,
++Lorem dolor sit amet,
+ consectetuer adipiscing elit.
+ Aenean commodo ligula eget dolor.
+ Aenean massa.
+
+ 2)Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git reset --hard
+Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+3)
+Brunos-MacBook-Pro:python-trainning-itc brunolerner$ open hello_world.txt
+Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   hello_world.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git add .
+Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   hello_world.txt
+
+Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git commit -m 'add my name'
+[master 6af7b49] add my name
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git push
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 284 bytes | 284.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/lernerbruno/python-trainning-itc.git
+   923560b..6af7b49  master -> master
+Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git log
+commit 6af7b4955230f97f83b499dbbb1737a87087983a (HEAD -> master, origin/master, origin/HEAD)
+Author: lernerbruno <bru.lerner@gmail.com>
+Date:   Thu May 2 11:23:45 2019 +0300
+
+    add my name
+
+commit 923560b0edf0d714d0fcd4a04e3453b13f60ac77
+Author: lernerbruno <bru.lerner@gmail.com>
+Date:   Thu May 2 11:16:29 2019 +0300
+
+    add zip files
+
+Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git checkout 	923560b0edf0d714d0fcd4a04e3453b13f60ac77
+Note: checking out '923560b0edf0d714d0fcd4a04e3453b13f60ac77'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b <new-branch-name>
+
+HEAD is now at 923560b... add zip files
+ Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git diff HEAD
+diff --git a/hello_world.txt b/hello_world.txt
+index 259faea..3a0dc13 100644
+--- a/hello_world.txt
++++ b/hello_world.txt
+@@ -6,4 +6,5 @@ Cum sociis natoque penatibus et magnis dis parturient montes,
+ nascetur ridiculus mus.
+ Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+ Nulla consequat massa quis enim.
+-Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+\ No newline at end of file
++Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
++bruno
+\ No newline at end of file
+Brunos-MacBook-Pro:python-trainning-itc brunolerner$ git checkout master
+Previous HEAD position was 923560b... add zip files
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.

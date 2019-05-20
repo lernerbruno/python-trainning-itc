@@ -1,0 +1,156 @@
+1)Brunos-MacBook-Pro:bitbucket-first brunolerner$ git checkout -b broccoli
+Switched to a new branch 'broccoli'
+
+Brunos-MacBook-Pro:bitbucket-first brunolerner$ git branch
+* broccoli
+  master
+
+ The command I use create the branch and checkout to it
+
+ 2)Yes, I need to specify the branch Im trying to push my commits to
+ Brunos-MacBook-Pro:bitbucket-first brunolerner$ git push python-exercises broccoli
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 293 bytes | 293.00 KiB/s, done.
+Total 3 (delta 2), reused 0 (delta 0)
+remote:
+remote: Create pull request for broccoli:
+remote:   https://bitbucket.org/lernerbruno/python-exercises/pull-requests/new?source=broccoli&t=1
+remote:
+To https://bitbucket.org/lernerbruno/python-exercises.git
+ * [new branch]      broccoli -> broccoli
+
+ 3)
+git pull
+remote: Counting objects: 75, done.
+remote: Compressing objects: 100% (73/73), done.
+remote: Total 75 (delta 35), reused 0 (delta 0)
+Unpacking objects: 100% (75/75), done.
+From https://bitbucket.org/Samowicz/first-repository
+   9e6b75e..a440429  master     -> origin/master
+ * [new branch]      Pizza      -> origin/Pizza
+Updating 9e6b75e..a440429
+Fast-forward
+ .DS_Store                                                       | Bin 6148 -> 8196 bytes
+ .idea/Git.iml                                                   |  11 +++++++
+ .idea/encodings.xml                                             |   4 +++
+ .idea/misc.xml                                                  |   4 +++
+ .idea/modules.xml                                               |   8 +++++
+ .idea/vcs.xml                                                   |   6 ++++
+ .idea/workspace.xml                                             | 190 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Answer Files/.DS_Store                                          | Bin 6148 -> 6148 bytes
+ Answer Files/Back to the future copy.txt                        | 102 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Answer Files/Collaboration made easy.txt                        |  71 +++++++++++++++++++++++++++++++++++++++++
+ Answer Files/Get out of the building.txt                        |  41 ++++++++++++++++++++++++
+ Answer Files/Houston We have a problem.txt                      |  77 ++++++++++++++++++++++++++++++++++++++++++++
+ Answer Files/{Back to the future.txt => Leave The Building.txt} |   0
+ Answer Files/Pycharm For the Win.txt                            |   7 ++++
+ Git cheat sheet.pdf                                             | Bin 84854 -> 85947 bytes
+ hello_world.txt                                                 |   4 ---
+ hello_world_2.txt                                               |   1 +
+ hello_world_new.txt                                             |   5 +++
+ 18 files changed, 527 insertions(+), 4 deletions(-)
+ create mode 100644 .idea/Git.iml
+ create mode 100644 .idea/encodings.xml
+ create mode 100644 .idea/misc.xml
+ create mode 100644 .idea/modules.xml
+ create mode 100644 .idea/vcs.xml
+ create mode 100644 .idea/workspace.xml
+ create mode 100644 Answer Files/Back to the future copy.txt
+ create mode 100644 Answer Files/Collaboration made easy.txt
+ create mode 100644 Answer Files/Get out of the building.txt
+ create mode 100644 Answer Files/Houston We have a problem.txt
+ rename Answer Files/{Back to the future.txt => Leave The Building.txt} (100%)
+ create mode 100644 Answer Files/Pycharm For the Win.txt
+ delete mode 100644 hello_world.txt
+ create mode 100644 hello_world_2.txt
+ create mode 100644 hello_world_new.txt
+
+Brunos-MacBook-Pro:first-repository brunolerner$ git branch
+* master
+  pizza
+Brunos-MacBook-Pro:first-repository brunolerner$ git checkout pizza
+Branch pizza set up to track remote branch pizza from origin.
+Switched to a new branch 'pizza'
+Brunos-MacBook-Pro:first-repository brunolerner$ git diff master
+diff --git a/.DS_Store b/.DS_Store
+index 343dfbe..fb7b617 100644
+Binary files a/.DS_Store and b/.DS_Store differ
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..6fbdc3b
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,110 @@
++# Created by .ignore support plugin (hsz.mobi)
++Answer Files/Back to the future.docx
++Answer Files/Houston, we have a problem.docx
++Answer Files/txt format/
++### Python template
++# Byte-compiled / optimized / DLL files
++__pycache__/
++*.py[cod]
++*$py.class
++
++# C extensions
++*.so
++
++# Distribution / packaging
++.Python
++build/
++develop-eggs/
++dist/
++downloads/
++eggs/
++.eggs/
++lib/
++lib64/
++parts/
++sdist/
++var/
++wheels/
++*.egg-info/
++.installed.cfg
++*.egg
++MANIFEST
++
++# PyInstaller
++#  Usually these files are written by a python script from a template
++#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+:
+
+Brunos-MacBook-Pro:first-repository brunolerner$ git checkout master
+Switched to branch 'master'
+Your branch is up-to-date with 'origin/master'.
+Brunos-MacBook-Pro:first-repository brunolerner$ git merge pizza
+Removing Answer Files/Pycharm For the Win.txt
+Removing Answer Files/Houston We have a problem.txt
+Removing Answer Files/Get out of the building.txt
+Removing Answer Files/Collaboration made easy.txt
+Removing Answer Files/Back to the future copy.txt
+Removing Answer Files/Answer File 1.txt
+Merge made by the 'recursive' strategy.
+ .DS_Store                                   | Bin 8196 -> 8196 bytes
+ .gitignore                                  | 110 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ .idea/workspace.xml                         |  91 ++++++++++++++++++++++++++++++++++++++++++++++++++++---------------
+ Answer Files/.DS_Store                      | Bin 6148 -> 6148 bytes
+ Answer Files/Advanced VCS with PyCharm.docx | Bin 0 -> 1363149 bytes
+ Answer Files/Answer File 1.txt              | 143 ----------------------------------------------------------------------------------------------------------
+ Answer Files/Back to the future copy.txt    | 102 ---------------------------------------------------------------------------
+ Answer Files/Collaboration made easy.txt    |  71 -----------------------------------------------------
+ Answer Files/Get out of the building.txt    |  41 -------------------------------
+ Answer Files/Houston We have a problem.txt  |  77 ---------------------------------------------------------
+ Answer Files/Pycharm For the Win.txt        |   7 ------
+ README.md                                   |   6 +++++
+ hello_world_new.txt                         |   6 ++---
+ 13 files changed, 190 insertions(+), 464 deletions(-)
+ create mode 100644 .gitignore
+ create mode 100644 Answer Files/Advanced VCS with PyCharm.docx
+ delete mode 100644 Answer Files/Answer File 1.txt
+ delete mode 100644 Answer Files/Back to the future copy.txt
+ delete mode 100644 Answer Files/Collaboration made easy.txt
+ delete mode 100644 Answer Files/Get out of the building.txt
+ delete mode 100644 Answer Files/Houston We have a problem.txt
+ delete mode 100644 Answer Files/Pycharm For the Win.txt
+ create mode 100644 README.md

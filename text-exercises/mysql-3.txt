@@ -1,0 +1,24 @@
+1. 
+	a) select full_name from actors order by full_name;
+	b) I got a table with a single column with the full names ordered by the name in ascending order.
+
+2.
+	a) select distinct count(*) from movies;
+	b) I got a table with the count of 38
+
+3.
+	a) select distinct count(*) from movies where genre='Action';
+	b) I got a table with the count of 3
+
+4.
+	a) select distinct * from movies where genre is null or genre!='Action';
+	b) I considered here that a movie with a null genre is not an action movie. So I got a table 	with 35 rows. 
+
+5.
+	a) select count(title), year from movies group by year;
+	b) I got a the count of movies and the year side by side
+
+6.
+	a) select title from movies where title like "%the%";
+	b) I got a table with the titles that have the somewhere
+	

@@ -1,0 +1,70 @@
+1. 11 processes
+	a) ps hax -o user | sort | uniq -c
+		   5
+		   6 USER
+		   1 _analyticsd
+		   1 _appleevents
+		   1 _cmiodalassistants
+		   1 _coreaudiod
+		   1 _displaypolicyd
+		   1 _distnote
+		   2 _fpsd
+		   1 _hidd
+		   1 _iconservices
+		   2 _locationd
+		   1 _mdnsresponder
+		   1 _netbios
+		   1 _networkd
+		   1 _nsurlsessiond
+		   1 _nsurlstoraged
+		   3 _spotlight
+		   1 _timed
+		   1 _usbmuxd
+		   1 _windowserver
+		 143 brunolerner
+		  77 root
+
+	b) ps | sort -n -k 1
+		  PID TTY           TIME CMD
+		  404 ttys000    0:00.06 /Applications/iTerm.app/Contents/MacOS/iTerm2 --server /usr/bin/login -fpl brunolerner /Applications/iTerm.app/Contents/MacOS/iTerm2 --launch_shell
+		  416 ttys000    0:00.50 -bash
+		  420 ttys001    0:00.04 /Applications/iTerm.app/Contents/MacOS/iTerm2 --server /usr/bin/login -fpl brunolerner /Applications/iTerm.app/Contents/MacOS/iTerm2 --launch_shell
+		  422 ttys001    0:00.05 -bash
+		  423 ttys002    0:00.05 /Applications/iTerm.app/Contents/MacOS/iTerm2 --server /usr/bin/login -fpl brunolerner /Applications/iTerm.app/Contents/MacOS/iTerm2 --launch_shell
+		  427 ttys002    0:00.05 -bash
+		 1651 ttys003    0:00.02 -bash
+		 1657 ttys003    0:00.00 -bash
+		 1659 ttys003    0:00.07 bash --init-file /dev/fd/63
+		 1778 ttys003    0:00.04 /bin/sh /usr/local/Cellar/mysql/8.0.15/bin/mysqld_safe --datadir=/usr/local/var/mysql --pid-file=/usr/local/var/mysql/Brunos-MacBook-Pro.local.pid
+		 1880 ttys003    4:34.13 /usr/local/Cellar/mysql/8.0.15/bin/mysqld --basedir=/usr/local/Cellar/mysql/8.0.15 --datadir=/usr/local/var/mysql --plugin-dir=/usr/local/Cellar/mysql/8.0.15/lib/plugin --log-error=Brunos-MacBook-Pro.local.err --pid-file=/usr/local/var/mysql/Brunos-MacBook-Pro.local.pid
+		 12899 ttys000    0:00.00 sort -n -k 1
+
+2. find . -type f -print | wc -l
+	659 files
+
+	a) find . -type f -size -5k | wc -l
+	   349 files
+
+	b) find . -type f -size -5k -exec grep "^#include" {} \; | wc -l
+       499 header files
+
+	c) find . -type f -size -5k -exec grep "^#include" {} \; | sort | uniq | wc -l
+		272 files
+
+	d) find . -type f -size -5k -exec grep "^#include" {} \; | sort | uniq -c | sort 
+		43 times used -->  #include <bits/c++config.h>
+
+3. find . -type f -exec file {} \; | cut -d " " -f 2- | sort | uniq -c
+	 246 ASCII text
+	   1 Apple Desktop Services Store
+	  17 C++ source text, ASCII text
+	  11 HTML document text, ASCII text
+	 378 c program text, ASCII text
+	   1 c program text, ASCII text, with very long lines
+	   5 c program text, UTF-8 Unicode text
+
+4. find . -type f -name "atomic" -exec cut -b 3-10 {} \; | sort | uniq -c | sort
+	The most common caracters besides whitespaces are "template"
+	68     atom
+	69 template
+	228

@@ -1,0 +1,35 @@
+1) It failed, because there are changes that I didn't pull. 
+
+2) When I try to pull, I got a conflict. Because we have changed same lines of same file
+
+Brunos-MacBook-Pro:bitbucket-first brunolerner$ git diff master
+diff --git a/hello_world.txt b/hello_world.txt
+index 4e491f7..2f71810 100644
+--- a/hello_world.txt
++++ b/hello_world.txt
+@@ -1,10 +1,15 @@
+ Lorem ipsum dolor sit amet,
+ consectetuer adipiscing elit.
++<<<<<<< HEAD
+ commodo ligula eget dolor.
+ massa.
++=======
++Aenjhean commodo ligula eget dolor.
++Aenjhean massa.
++>>>>>>> db47669b5848487794062f72049c546d50726d9f
+ Cum sociis natoque penatibus et magnis dis parturient montes,
+ nascetur ridiculus mus.
+ Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.
+ Nulla consequat massa quis enim.
+ Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+-bruno
+\ No newline at end of file
++bruno
+
+Brunos-MacBook-Pro:bitbucket-first brunolerner$ git merge
+error: Merging is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+
+I cant merge, I need to solve conflicts before.

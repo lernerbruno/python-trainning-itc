@@ -1,0 +1,53 @@
+1)
+	Brunos-MacBook-Pro:Downloads brunolerner$ mkdir linux-1
+	Brunos-MacBook-Pro:Downloads brunolerner$ mv cpp_headers.tar linux-1/
+	Brunos-MacBook-Pro:Downloads brunolerner$ cd linux-1/
+	Brunos-MacBook-Pro:linux-1 brunolerner$ ls
+	cpp_headers.tar
+	Brunos-MacBook-Pro:linux-1 brunolerner$ tar -xf cpp_headers.tar
+	Brunos-MacBook-Pro:linux-1 brunolerner$ rm -f cpp_headers.tar
+
+2)
+	a. ls -Ss | head -2
+		The biggest file in the root directory is functional and it has 160 bytes
+
+	b. wc functional 
+		2581    7761   81127 functional
+
+	c. sort functional | tail -5
+		_GLIBCXX_END_NAMESPACE_VERSION
+		_GLIBCXX_HAS_NESTED_TYPE(result_type)
+		namespace std _GLIBCXX_VISIBILITY(default)
+		{
+		} // namespace std
+
+	d. cat functional | grep '#include' | wc -l
+		It has 8 header files
+
+3. find . -maxdepth 1 | du -h -d 1
+	116K	./backward
+	2.7M	./bits
+	412K	./debug
+	 40K	./decimal
+	2.3M	./ext
+	612K	./parallel
+	312K	./profile
+	 44K	./sun
+	856K	./tr1
+	 72K	./tr2
+	8.4M	.
+
+
+4. find . -name "*.h" -exec grep -i "int" '{}' \; | wc -l
+	4758 lines
+	a)  find . -name "*.h" -exec grep -i "int" '{}' \; | grep -i -v 'integer' | wc -l
+		4497 lines
+	b) find . -name "*.h" -exec sh -c " grep "^//" {} | wc -l" \; -print -maxdepth 1
+		      20
+		./complex.h
+		      23
+		./cxxabi.h
+		      19
+		./fenv.h
+		      19
+		./tgmath.h

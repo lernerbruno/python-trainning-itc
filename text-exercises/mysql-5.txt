@@ -1,0 +1,64 @@
+1.
+	a)  select actors.full_name
+		from cast
+		inner join actors on cast.actor_id = actors.id
+		inner join movies on cast.movie_id = movies.id
+		where movies.title = 'Star Wars' or movies.title = 'Return of the Jedi';
+	b) a table with the actors that participated in Star wars or Return of the Jedi movie, and it has 197 rows.
+
+2.
+	a)	select actors.full_name, count(movies.genre)
+		from cast
+		inner join actors on cast.actor_id = actors.id
+		inner join movies on cast.movie_id = movies.id
+		group by actors.full_name
+		order by count(movies.genre) desc
+		limit 5;
+	b) a table with the 5 most diverse actors, Kevin Bacon is the first one with 9 different genres
+
+3.
+	a)  select actors.full_name, count(actors.full_name), movies.year
+		from cast
+		inner join actors on cast.actor_id = actors.id
+		inner join movies on cast.movie_id = movies.id
+		group by movies.year, actors.full_name
+		order by count(actors.full_name) desc
+		limit 1;
+	b)	Cameron Diaz, that participated in 2 movies in 2001
+
+4.
+	a)  select actors.full_name, max(movies.year) - min(movies.year), count(movies.year)
+		from cast
+		inner join actors on cast.actor_id = actors.id
+		inner join movies on cast.movie_id = movies.id
+		group by actors.full_name
+		having count(movies.year) >= 5
+		order by count(movies.year) desc;
+
+	b) The only one that worked in more than 5 movies is Kevin Bacon, working on 9 movies with a career span of 25 years
+
+5.
+	a)  select c1.name, c2.year - c1.year as gap
+		from (
+			select row_number() over (order by actors.full_name, movies.year) as seq_number, actors.full_name as name, movies.year as year
+			from cast
+			inner join actors on cast.actor_id = actors.id
+			inner join movies on cast.movie_id = movies.id
+			order by actors.full_name, movies.year
+		) as c1
+		inner join (
+			select row_number() over (order by actors.full_name, movies.year) as seq_number, actors.full_name as name, movies.year as year
+			from cast
+			inner join actors on cast.actor_id = actors.id
+			inner join movies on cast.movie_id = movies.id
+			order by actors.full_name, movies.year
+		) as c2 on c2.seq_number = c1.seq_number + 1 and c1.name = c2.name
+		order by gap desc
+		limit 1;
+
+	b) I get a table with 1 entry, which is Malcolm Tierney with 18 years of Gap 
+	+-----------------+------+
+	| name            | gap  |
+	+-----------------+------+
+	| Malcolm Tierney |   18 |
+	+-----------------+------+

@@ -1,0 +1,12 @@
+1) cat places.txt | grep -o ":\/\/[^\/]*\/" | sort | uniq -c | sort | tail -n 10
+
+   6 ://my.screenname.aol.com/
+   6 ://signup.live.com/
+   7 ://ad.doubleclick.net/
+   8 ://www.google.com/
+  13 ://dashboard.aim.com/
+  14 ://bl120w.blu120.mail.live.com/
+  15 ://login.live.com/
+  16 ://co101w.col101.mail.live.com/
+  19 ://mail.google.com/
+  32 ://news.bbc.co.uk/

@@ -1,0 +1,60 @@
+1)lernerbruno (Bruno Lerner)
+
+2)https://bitbucket.org/lernerbruno/first/src/master/
+
+3)Brunos-MacBook-Pro:bitbucket-first brunolerner$ git remote add first https://lernerbruno@bitbucket.org/lernerbruno/first.git
+Brunos-MacBook-Pro:bitbucket-first brunolerner$ cat .git/config
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "first"]
+	url = https://lernerbruno@bitbucket.org/lernerbruno/first.git
+	fetch = +refs/heads/*:refs/remotes/first/*
+
+4)Brunos-MacBook-Pro:bitbucket-first brunolerner$ cp ~/PycharmProjects/knowing_env/* .
+Brunos-MacBook-Pro:bitbucket-first brunolerner$ git add .
+Brunos-MacBook-Pro:bitbucket-first brunolerner$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   Archive.zip
+	new file:   decrypt_1.py
+	new file:   decrypt_2.py
+	new file:   encrypt_for_decrypt_1.py
+	new file:   encrypt_for_decrypt_2.py
+	new file:   ex2-whats_your_state.py
+	new file:   ex3-bugging_doctor.py
+	new file:   know_your_env.py
+	new file:   my_bug.py
+	new file:   my_bug_correct.py
+
+Brunos-MacBook-Pro:bitbucket-first brunolerner$ git commit -m 'add python exercises'
+[master (root-commit) cd6df76] add python exercises
+ 10 files changed, 153 insertions(+)
+ create mode 100644 Archive.zip
+ create mode 100755 decrypt_1.py
+ create mode 100755 decrypt_2.py
+ create mode 100755 encrypt_for_decrypt_1.py
+ create mode 100755 encrypt_for_decrypt_2.py
+ create mode 100755 ex2-whats_your_state.py
+ create mode 100755 ex3-bugging_doctor.py
+ create mode 100755 know_your_env.py
+ create mode 100644 my_bug.py
+ create mode 100644 my_bug_correct.py
+ Brunos-MacBook-Pro:bitbucket-first brunolerner$ git push --set-upstream python-exercises master
+Counting objects: 12, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (12/12), 2.99 KiB | 1020.00 KiB/s, done.
+Total 12 (delta 2), reused 0 (delta 0)
+To https://bitbucket.org/lernerbruno/python-exercises.git
+ * [new branch]      master -> master
+Branch master set up to track remote branch master from python-exercises.

@@ -1,0 +1,9 @@
+1)Blue - The file has been modified
+Green - New file added
+Red - The file has conflicts
+
+2) When I click show diff, I see the base version, my version, and my collaborator's version, it is awesome.
+
+3) I solved the conflict by merging the 2 versions
+
+4) I pushed the code via pycharm interface
