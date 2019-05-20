@@ -11,7 +11,7 @@ def main():
     # print number if its positive and 0 if its negative
     non_negative = lambda a: 0 if a < 0 else a
     # it duplicates each digit by 2
-    double_digits = lambda x: reduce(lambda c, d: c + d * 2, str(x), "")
+    double_digits = lambda x: int(reduce(lambda c, d: c + d * 2, str(x), ""))
 
     print(div_and_mod(2, 0))
     print(div_and_mod(2, 3))

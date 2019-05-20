@@ -11,8 +11,8 @@ def hex_encoder(message):
     :return: 
     """
 
-    return "".join([str(ord(x)) for x in message])
+    return "".join([str(hex(ord(x)))[2:] for x in message])
 
 
 if __name__ == "__main__":
-    print(hex_encoder('hello'))
+    print(hex_encoder('hello world'))

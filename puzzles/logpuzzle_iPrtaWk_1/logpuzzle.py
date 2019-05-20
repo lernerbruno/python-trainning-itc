@@ -45,6 +45,7 @@ def read_urls(filename):
         hostname = match.group(1)
     else:
         print('something is wrong with the filename')
+        return
 
     if os.path.isfile(filename):
         f = open(filename, 'r')
@@ -81,6 +82,9 @@ def download_images(img_urls, dest_dir):
     if not os.path.exists(dest_dir):
         os.mkdir(dest_dir)
     i = 0
+    if img_urls is None:
+        raise TypeError("We didn't get the urls because you probably provided a non existing file")
+
     for url in img_urls:
         print('Requesting : ' + url)
         file_path = os.path.join(dest_dir, 'img' + str(i))
@@ -96,23 +100,29 @@ def download_images(img_urls, dest_dir):
 
 def main():
     """ draw the logpuzzle pictures """
-    args = sys.argv[FIRST_ARG:]
+    try:
+        args = sys.argv[FIRST_ARG:]
 
-    if not args:
-        print("usage: [--todir dir] logfile ")
-        sys.exit(1)
+        if not args:
+            print("usage: [--todir dir] logfile ")
+            sys.exit(1)
 
-    todir = ""
-    if args[0] == "--todir":
-        todir = args[FIRST_ARG]
-        del args[0:LAST_ARG]
+        todir = ""
+        if args[0] == "--todir":
+            todir = args[FIRST_ARG]
+            del args[0:LAST_ARG]
 
-    img_urls = read_urls(args[0])
+        img_urls = read_urls(args[0])
 
-    if todir:
-        download_images(img_urls, todir)
-    else:
-        print("\n".join(img_urls))
+        if todir:
+            download_images(img_urls, todir)
+        else:
+            print("\n".join(img_urls))
+    except FileNotFoundError:
+        print("Please provide an existing file")
+    except TypeError as error:
+        print(error)
+
 
 
 if __name__ == "__main__":
