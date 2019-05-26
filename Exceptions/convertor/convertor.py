@@ -11,8 +11,10 @@ NON_NUMERIC_ERROR = "You added a non numeric value for the meters column in row 
 NEGATIVE_NUMBER_ERROR = "You added a negative value for the meters column in row number %s . Please correct it"
 COLUMN_LEN_ERROR = "The row number %s in your csv file, has more then 1 line, it has %s. Please correct it"
 FILE_FORMAT_ERROR = "The file you have provided is not .csv file. Please provide a csv file"
+EMPTY_FILE = "You have provided an empty file. Please provide one with data"
 CSV_FORMAT = ".csv"
 METER_COLUMN = 0
+CONVERSION_RATE = 3.28084
 
 
 def define_arguments():
@@ -31,7 +33,7 @@ def meter_to_feet(meters):
     :param meters:
     :return:
     """
-    return str(3.28084 * int(meters))
+    return str(CONVERSION_RATE * int(meters))
 
 
 def validate_row(row, position):
@@ -45,7 +47,7 @@ def validate_row(row, position):
 
     if len(row) > NUMBER_OF_COLUMNS:
         raise ValueError(COLUMN_LEN_ERROR % (str(position + 1), len(row)))
-    if not meters[1:].isnumeric() and meters[0] == '-':
+    if not meters.strip("-").isnumeric():
         raise ValueError(NON_NUMERIC_ERROR % str(position + 1))
     if int(meters) < 0:
         raise ValueError(NEGATIVE_NUMBER_ERROR % str(position + 1))
@@ -62,16 +64,20 @@ def main():
         dot_index = args.filename.index(".")
         new_filename = NEW_FILE_FORMAT % (args.filename[:dot_index], args.filename[dot_index:])
 
-        with open(args.filename, 'r') as current_f, open(new_filename, 'w') as new_f:
+        with open(args.filename, 'r') as current_f:
             csv_reader = csv.reader(current_f)
-            csv_writer = csv.writer(new_f)
 
             all_rows = []
             for i, row in enumerate(csv_reader):
                 valid_meters = validate_row(row, i)
                 row.append(meter_to_feet(valid_meters))
                 all_rows.append(row)
-            csv_writer.writerows(all_rows)
+
+        if len(all_rows) == 0:
+            raise ValueError(EMPTY_FILE)
+        new_f = open(new_filename, 'w')
+        csv_writer = csv.writer(new_f)
+        csv_writer.writerows(all_rows)
 
     except FileNotFoundError:
         print("The file you provided was not found. Please provide an existing one")
